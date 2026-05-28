@@ -1,0 +1,204 @@
+{
+  "menu": {
+    "home": "Home",
+    "projects": "Projects",
+    "about": "About",
+    "blog": "Blog"
+  },
+  "home": {
+    "greeting": "Hi, I'm Ítalo 👋",
+    "title": "Full Stack Developer focused on Vue.js and Python",
+    "subtitle": "6+ years building scalable, high-performance applications across front-end and back-end. I focus on clean architecture, code quality, and shipping solutions that create measurable value.",
+    "seoDescription": "Portfolio of {name} — Full Stack Developer focused on Vue.js and Python.",
+    "available": "Available for hire",
+    "locations": {
+      "beloHorizonteMgBr": "Belo Horizonte, MG, Brazil"
+    },
+    "ctaProjects": "View projects",
+    "ctaContact": "Get in touch",
+    "featuredTitle": "Featured Projects",
+    "seeAll": "See all",
+    "stats": {
+      "years": "years of experience",
+      "projects": "projects delivered",
+      "stacks": "main stacks",
+      "langs": "spoken languages"
+    }
+  },
+  "about": {
+    "title": "About me",
+    "bio": "I'm a Full Stack Developer with 6 years of experience in Vue.js and Python, passionate about turning concepts into digital products. I helped refactor, document and test legacy applications, reaching over 80% test coverage.",
+    "seoDescription": "Full Stack Developer and Front-end specialist in Vue.js, with a strong Python foundation and focus on software quality.",
+    "focusTitle": "Current focus",
+    "focusText": "Full-stack web applications, systems architecture and continuous quality. I'm actively studying applied AI with LLMs and computer vision as an extension of my core stack.",
+    "stackTitle": "Main stack",
+    "stackText": "Vue.js 2/3, TypeScript, Python (Django/Flask), Node.js, PostgreSQL, Docker, Kubernetes and GCP.",
+    "skillsTitle": "Skills by category",
+    "skills": {
+      "items": {
+        "frontend": {
+          "title": "Front-end",
+          "purpose": "Primary specialty"
+        },
+        "backend": {
+          "title": "Back-end",
+          "purpose": "APIs, business rules and integrations"
+        },
+        "data": {
+          "title": "Data and Quality",
+          "purpose": "Persistence, testing and architecture"
+        },
+        "platform": {
+          "title": "Platform and Security",
+          "purpose": "Production operations"
+        },
+        "ai": {
+          "title": "Applied AI (in progress)",
+          "purpose": "Studies and practical projects"
+        }
+      },
+      "catalog": {
+        "vue": "Vue.js 2/3",
+        "nuxt": "Nuxt 3",
+        "typescript": "TypeScript",
+        "primevue": "PrimeVue",
+        "vuetify": "Vuetify",
+        "materialUi": "Material UI",
+        "react": "React",
+        "python": "Python",
+        "django": "Django",
+        "flask": "Flask",
+        "nodejs": "Node.js",
+        "restApi": "REST API",
+        "keycloak": "Keycloak",
+        "cognito": "Cognito",
+        "saml": "SAML",
+        "postgresql": "PostgreSQL",
+        "mongodb": "MongoDB",
+        "sqlite": "SQLite",
+        "pytest": "Pytest",
+        "jest": "Jest",
+        "sonarqube": "SonarQube",
+        "cleanArchitecture": "Clean Architecture",
+        "ddd": "DDD",
+        "docker": "Docker",
+        "kubernetes": "Kubernetes",
+        "gcp": "GCP",
+        "cicd": "CI/CD",
+        "sentry": "Sentry",
+        "owasp": "OWASP",
+        "csp": "CSP",
+        "localLlms": "Local LLMs",
+        "ollama": "Ollama",
+        "gemma": "Gemma",
+        "clip": "CLIP",
+        "insightface": "InsightFace",
+        "generativeAgents": "Generative Agents"
+      }
+    },
+    "experienceTitle": "Professional experience",
+    "experience": {
+      "items": {
+        "independentProjects": {
+          "role": "Full Stack Developer",
+          "company": "Independent Projects",
+          "location": "Belo Horizonte, Brazil"
+        },
+        "pontotel": {
+          "role": "Mid-level Development Analyst III",
+          "company": "Pontotel",
+          "location": "Sao Paulo, Brazil"
+        },
+        "federalPoliceMg": {
+          "role": "Web Development Intern",
+          "company": "Federal Police Superintendence in Minas Gerais",
+          "location": "Belo Horizonte, Brazil"
+        }
+      },
+      "highlights": {
+        "photohubLocal": "Built a local photo manager with Python, Vue/Vite and SQLite, using ML (CLIP and InsightFace) for intelligent organization.",
+        "simsModAgents": "Developed a The Sims 3 mod with generative agents and local LLMs (Ollama/Gemma) on a hybrid C#/.NET architecture.",
+        "freelanceAutomation": "In freelance projects, automated processes with Python and reduced billing/control generation time by about 90%.",
+        "djangoVuePerformance": "Developed applications with Django and Vue.js, reducing load time by about 20% through code optimization.",
+        "qualityTestsTyping": "Structured tests with Pytest and Jest, standardized typing with TypeScript and improved quality indicators with SonarQube.",
+        "frontendTechLead": "Acted as a front-end technical reference, leading legacy refactors, integrations and production security practices.",
+        "intranetLightbase": "Contributed to development and maintenance of intranet systems integrated with LightBase.",
+        "fieldRemoteSupport": "Worked with remote/on-site technical support and field service.",
+        "itAutomationInfra": "Supported automation and IT infrastructure maintenance, including hardware troubleshooting."
+      }
+    },
+    "backgroundTitle": "Education and achievements",
+    "educationTitle": "Education",
+    "education": {
+      "degree": "Bachelor's in Computer Science",
+      "institution": "Centro Universitario de Belo Horizonte",
+      "location": "Belo Horizonte, Brazil"
+    },
+    "achievementsTitle": "Top achievements",
+    "achievements": {
+      "items": {
+        "technicalLeadership": {
+          "title": "Technical Leadership",
+          "description": "Recognized as a technical reference for problem-solving and front-end solution definition."
+        },
+        "appPerformance": {
+          "title": "Application Performance",
+          "description": "Implemented improvements that increased overall web application performance by around 30%."
+        },
+        "codeQuality": {
+          "title": "Code Quality",
+          "description": "Evolved code review processes, contributing to an approximate 20% increase in code quality."
+        },
+        "academicHighlights": {
+          "title": "Academic Excellence",
+          "description": "High academic performance with over 90% course approval and institutional recognition."
+        }
+      }
+    },
+    "languagesTitle": "Languages",
+    "languages": {
+      "items": {
+        "pt": "Portuguese",
+        "en": "English",
+        "de": "German"
+      },
+      "levels": {
+        "native": "Native",
+        "advanced": "Advanced",
+        "intermediate": "Intermediate"
+      }
+    },
+    "present": "Present"
+  },
+  "projects": {
+    "title": "Projects",
+    "subtitle": "Projects spanning full-stack web systems, automation and applied AI.",
+    "viewProject": "View project",
+    "items": {
+      "1": { "description": "C# mod for The Sims 3 using local LLMs to generate characters' thoughts and narratives in real time. Based on Stanford's \"Generative Agents\" paper." },
+      "2": { "description": "Billing system with automated financial processes, reducing operational errors and increasing efficiency." },
+      "3": { "description": "Personal portfolio v1 built with Nuxt 2 and Vuetify. Available in English and Portuguese." },
+      "4": { "description": "Local photo manager inspired by Google Photos with an ML pipeline (CLIP and InsightFace) for people identification, semantic classification and intelligent organization." }
+    }
+  },
+  "contact": {
+    "title": "Get in touch",
+    "subtitle": "Open to Frontend and Full Stack opportunities, with applied AI as a differentiator. Let's talk.",
+    "name": "Name",
+    "email": "Email",
+    "message": "Message",
+    "submit": "Send",
+    "sent": "Message sent!"
+  },
+  "blog": {
+    "title": "Blog",
+    "subtitle": "Thoughts on Vue.js, Python, software engineering and applied AI studies.",
+    "readMore": "Read more →",
+    "noArticles": "No articles yet. Come back soon.",
+    "notFound": "Post not found."
+  },
+  "footer": {
+    "stack": "Built with Nuxt 3 · Vue 3 · TypeScript"
+  }
+}
+

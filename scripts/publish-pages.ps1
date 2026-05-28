@@ -1,0 +1,55 @@
+param(
+  [switch]$SkipChecks,
+  [switch]$PushToMaster,
+  [switch]$PushToMain,
+  [switch]$Force
+)
+
+$ErrorActionPreference = 'Stop'
+$PSNativeCommandUseErrorActionPreference = $true
+
+Write-Host '== GitHub Pages publish helper ==' -ForegroundColor Cyan
+Write-Host "Repository: $(git remote get-url origin)"
+Write-Host "Branch: $(git branch --show-current)"
+
+if (-not $SkipChecks) {
+  Write-Host 'Running quality gates...' -ForegroundColor Yellow
+  npm run lint
+  npm run type-check
+  npm run build
+}
+
+if ((git status --porcelain)) {
+  Write-Host 'Local changes detected. Commit before publishing.' -ForegroundColor Yellow
+  Write-Host 'Suggested commands:' -ForegroundColor Yellow
+  Write-Host '  git add -A'
+  Write-Host '  git commit -m "chore: publish portfolio"'
+  exit 1
+}
+
+$currentBranch = git branch --show-current
+
+if (-not $PushToMaster -and -not $PushToMain) {
+  # Default behavior: publish to master to match existing itpzzi.github.io branch.
+  $PushToMaster = $true
+}
+
+if ($PushToMaster) {
+  Write-Host 'Pushing current branch to origin/master...' -ForegroundColor Green
+  if ($Force) {
+    git push --force origin "$($currentBranch):master"
+  } else {
+    git push -u origin "$($currentBranch):master"
+  }
+}
+
+if ($PushToMain) {
+  Write-Host 'Pushing current branch to origin/main...' -ForegroundColor Green
+  if ($Force) {
+    git push --force origin "$($currentBranch):main"
+  } else {
+    git push -u origin "$($currentBranch):main"
+  }
+}
+
+Write-Host 'Publish push completed.' -ForegroundColor Green
