@@ -188,7 +188,9 @@
     "email": "Email",
     "message": "Message",
     "submit": "Send",
-    "sent": "Message sent!"
+    "sending": "Sending...",
+    "sent": "Message sent!",
+    "error": "Message could not be sent right now. Please try again later or contact me by e-mail."
   },
   "blog": {
     "title": "Blog",

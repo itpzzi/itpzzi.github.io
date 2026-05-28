@@ -25,7 +25,12 @@
         {{ $t('contact.sent') }}
       </p>
 
+      <p v-if="submitError" class="rounded-md bg-rose-50 px-4 py-3 text-sm text-rose-700 dark:bg-rose-900/20 dark:text-rose-300">
+        {{ submitError }}
+      </p>
+
       <form v-else class="max-w-xl space-y-4" @submit="onSubmit">
+        <input v-model="honey" type="text" name="company" autocomplete="off" class="hidden" tabindex="-1" aria-hidden="true">
         <div>
           <label class="mb-1 block text-sm font-medium">{{ $t('contact.name') }}</label>
           <input v-model="name" type="text" class="w-full rounded-md border border-slate-300 px-3 py-2 dark:border-slate-700 dark:bg-slate-900">
@@ -41,8 +46,8 @@
           <textarea v-model="message" rows="5" class="w-full rounded-md border border-slate-300 px-3 py-2 dark:border-slate-700 dark:bg-slate-900" />
           <p v-if="errors.message" class="mt-1 text-sm text-rose-600">{{ errors.message }}</p>
         </div>
-        <button type="submit" class="rounded-md bg-sky-600 px-4 py-2 text-sm font-medium text-white hover:bg-sky-500">
-          {{ $t('contact.submit') }}
+        <button type="submit" :disabled="isSubmitting" class="rounded-md bg-sky-600 px-4 py-2 text-sm font-medium text-white hover:bg-sky-500 disabled:cursor-not-allowed disabled:opacity-70">
+          {{ isSubmitting ? $t('contact.sending') : $t('contact.submit') }}
         </button>
       </form>
     </section>
@@ -129,6 +134,9 @@ import { owner } from '~/data/owner'
 const { t } = useI18n()
 
 const sent = ref(false)
+const isSubmitting = ref(false)
+const submitError = ref('')
+const honey = ref('')
 
 const schema = toTypedSchema(
   z.object({
@@ -143,9 +151,41 @@ const [name] = defineField('name')
 const [email] = defineField('email')
 const [message] = defineField('message')
 
-const onSubmit = handleSubmit((values) => {
-  console.info('Contato enviado', values)
-  sent.value = true
+const onSubmit = handleSubmit(async (values) => {
+  if (honey.value) {
+    return
+  }
+
+  isSubmitting.value = true
+  submitError.value = ''
+
+  try {
+    const response = await fetch(`https://formsubmit.co/ajax/${owner.email}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      },
+      body: JSON.stringify({
+        name: values.name,
+        email: values.email,
+        message: values.message,
+        _subject: 'Portfolio contact form',
+        _captcha: 'false',
+        _template: 'table',
+      }),
+    })
+
+    if (!response.ok) {
+      throw new Error(`formsubmit_http_${response.status}`)
+    }
+
+    sent.value = true
+  } catch {
+    submitError.value = t('contact.error')
+  } finally {
+    isSubmitting.value = false
+  }
 })
 
 function formatPeriod(from: string, to: string) {

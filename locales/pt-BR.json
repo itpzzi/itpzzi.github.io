@@ -188,7 +188,9 @@
     "email": "E-mail",
     "message": "Mensagem",
     "submit": "Enviar",
-    "sent": "Mensagem enviada!"
+    "sending": "Enviando...",
+    "sent": "Mensagem enviada!",
+    "error": "Não foi possível enviar a mensagem agora. Tente novamente mais tarde ou entre em contato por e-mail."
   },
   "blog": {
     "title": "Blog",

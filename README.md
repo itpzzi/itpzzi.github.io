@@ -56,6 +56,13 @@ Run before opening PRs:
   - English (`en`) as default fallback
   - any available variant as last resort
 
+## Contact delivery
+
+- Contact form submits through FormSubmit AJAX endpoint to `itpzzi@gmail.com`.
+- Submission success state is now coupled to HTTP success response (no local-only success simulation).
+- Form includes a honeypot field to reduce bot submissions.
+- First real submission may require FormSubmit e-mail activation/confirmation.
+
 ## GitHub Pages static deploy
 
 - Project is configured for static generation (`npm run build` runs `nuxi generate`).
