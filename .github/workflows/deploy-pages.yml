@@ -4,23 +4,20 @@ on:
   push:
     branches:
       - main
-      - master
   workflow_dispatch:
 
 permissions:
-  contents: read
-  pages: write
-  id-token: write
+  contents: write
 
 concurrency:
   group: pages
   cancel-in-progress: true
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout source branch
         uses: actions/checkout@v4
 
       - name: Setup Node.js
@@ -38,27 +35,20 @@ jobs:
       - name: Type-check
         run: npm run type-check
 
-      - name: Generate static site
+      - name: Build static site
         run: npm run build
         env:
           GITHUB_PAGES: 'true'
           SITE_URL: 'https://itpzzi.github.io'
 
-      - name: Configure GitHub Pages
-        uses: actions/configure-pages@v5
+      - name: Ensure no Jekyll processing
+        run: New-Item -ItemType File -Path .output/public/.nojekyll -Force
+        shell: pwsh
 
-      - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v3
+      - name: Publish to master branch
+        uses: peaceiris/actions-gh-pages@v4
         with:
-          path: .output/public
-
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: .output/public
+          publish_branch: master
+          force_orphan: true

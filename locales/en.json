@@ -190,6 +190,7 @@
     "submit": "Send",
     "sending": "Sending...",
     "sent": "Message sent!",
+    "activationRequired": "One-time FormSubmit activation is pending. Confirm the activation e-mail, then submit again.",
     "error": "Message could not be sent right now. Please try again later or contact me by e-mail."
   },
   "blog": {

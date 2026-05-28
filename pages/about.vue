@@ -151,6 +151,11 @@ const [name] = defineField('name')
 const [email] = defineField('email')
 const [message] = defineField('message')
 
+interface FormSubmitResponse {
+  success?: string | boolean
+  message?: string
+}
+
 const onSubmit = handleSubmit(async (values) => {
   if (honey.value) {
     return
@@ -180,9 +185,21 @@ const onSubmit = handleSubmit(async (values) => {
       throw new Error(`formsubmit_http_${response.status}`)
     }
 
+    const payload = await response.json() as FormSubmitResponse
+    const ok = payload.success === true || payload.success === 'true'
+
+    if (!ok) {
+      throw new Error(payload.message || 'formsubmit_unknown_error')
+    }
+
     sent.value = true
-  } catch {
-    submitError.value = t('contact.error')
+  } catch (error) {
+    const message = error instanceof Error ? error.message : ''
+    if (/activate|confirm/i.test(message)) {
+      submitError.value = t('contact.activationRequired')
+    } else {
+      submitError.value = t('contact.error')
+    }
   } finally {
     isSubmitting.value = false
   }

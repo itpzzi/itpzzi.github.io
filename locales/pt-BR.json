@@ -190,6 +190,7 @@
     "submit": "Enviar",
     "sending": "Enviando...",
     "sent": "Mensagem enviada!",
+    "activationRequired": "A ativação única do FormSubmit está pendente. Confirme o e-mail de ativação e envie novamente.",
     "error": "Não foi possível enviar a mensagem agora. Tente novamente mais tarde ou entre em contato por e-mail."
   },
   "blog": {

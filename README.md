@@ -59,7 +59,7 @@ Run before opening PRs:
 ## Contact delivery
 
 - Contact form submits through FormSubmit AJAX endpoint to `itpzzi@gmail.com`.
-- Submission success state is now coupled to HTTP success response (no local-only success simulation).
+- Submission success state is coupled to FormSubmit success payload (no local-only success simulation).
 - Form includes a honeypot field to reduce bot submissions.
 - First real submission may require FormSubmit e-mail activation/confirmation.
 
@@ -76,7 +76,7 @@ This repository includes [deploy-pages.yml](.github/workflows/deploy-pages.yml) 
 ### Target
 
 - Production host: `https://itpzzi.github.io`
-- Deployment model: static artifact upload from `.output/public`
+- Deployment model: source in `main`, generated static site published to `master`
 
 ### CI pipeline
 
@@ -86,13 +86,13 @@ On each push to `main` (or manual dispatch), the workflow executes:
 2. `npm run lint`
 3. `npm run type-check`
 4. `npm run build` (static generation)
-5. Upload artifact via `actions/upload-pages-artifact`
-6. Deploy via `actions/deploy-pages`
+5. Generate `.output/public`
+6. Publish `.output/public` to `master`
 
 ### Repository settings
 
-- Pages source: **GitHub Actions**
-- Workflow triggers: `main` and `master`
+- Pages source should point to `master` / root
+- Workflow trigger: `main`
 
 ### Base URL behavior
 
@@ -114,7 +114,7 @@ Standard publish to production branch model:
 pwsh ./scripts/publish-pages.ps1
 ```
 
-Push target: `origin/master`
+Push target: `origin/main`
 
 First replacement publish when remote history is non-fast-forward:
 

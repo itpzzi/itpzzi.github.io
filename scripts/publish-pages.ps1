@@ -19,7 +19,10 @@ if (-not $SkipChecks) {
   npm run build
 }
 
-if ((git status --porcelain)) {
+$statusOutput = git status --porcelain
+$effectiveStatus = $statusOutput | Where-Object { $_ -notmatch '\.data/content/contents\.sqlite$' }
+
+if ($effectiveStatus) {
   Write-Host 'Local changes detected. Commit before publishing.' -ForegroundColor Yellow
   Write-Host 'Suggested commands:' -ForegroundColor Yellow
   Write-Host '  git add -A'
@@ -30,8 +33,8 @@ if ((git status --porcelain)) {
 $currentBranch = git branch --show-current
 
 if (-not $PushToMaster -and -not $PushToMain) {
-  # Default behavior: publish to master to match existing itpzzi.github.io branch.
-  $PushToMaster = $true
+  # Default behavior: publish source to main; workflow deploys static output to master.
+  $PushToMain = $true
 }
 
 if ($PushToMaster) {

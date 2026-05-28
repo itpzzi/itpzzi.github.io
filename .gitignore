@@ -2,6 +2,7 @@ node_modules/
 .nuxt/
 dist/
 .output/
+.data/content/contents.sqlite
 .env
 .env.local
 *.log
