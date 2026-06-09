@@ -76,7 +76,7 @@ This repository includes [deploy-pages.yml](.github/workflows/deploy-pages.yml) 
 ### Target
 
 - Production host: `https://itpzzi.github.io`
-- Deployment model: source in `main`, generated static site published to `master`
+- Deployment model: source in `main`, static output deployed by GitHub Actions Pages
 
 ### CI pipeline
 
@@ -87,11 +87,11 @@ On each push to `main` (or manual dispatch), the workflow executes:
 3. `npm run type-check`
 4. `npm run build` (static generation)
 5. Generate `.output/public`
-6. Publish `.output/public` to `master`
+6. Upload Pages artifact and deploy via `actions/deploy-pages`
 
 ### Repository settings
 
-- Pages source should point to `master` / root
+- Pages source should be `GitHub Actions`
 - Workflow trigger: `main`
 
 ### Base URL behavior
@@ -120,12 +120,6 @@ First replacement publish when remote history is non-fast-forward:
 
 ```powershell
 pwsh ./scripts/publish-pages.ps1 -Force
-```
-
-Optional dual-branch publication:
-
-```powershell
-pwsh ./scripts/publish-pages.ps1 -PushToMaster -PushToMain
 ```
 
 ### Verify deployment
