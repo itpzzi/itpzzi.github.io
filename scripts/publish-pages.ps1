@@ -1,7 +1,5 @@
 param(
   [switch]$SkipChecks,
-  [switch]$PushToMaster,
-  [switch]$PushToMain,
   [switch]$Force
 )
 
@@ -32,27 +30,11 @@ if ($effectiveStatus) {
 
 $currentBranch = git branch --show-current
 
-if (-not $PushToMaster -and -not $PushToMain) {
-  # Default behavior: publish source to main; workflow deploys static output to master.
-  $PushToMain = $true
-}
-
-if ($PushToMaster) {
-  Write-Host 'Pushing current branch to origin/master...' -ForegroundColor Green
-  if ($Force) {
-    git push --force origin "$($currentBranch):master"
-  } else {
-    git push -u origin "$($currentBranch):master"
-  }
-}
-
-if ($PushToMain) {
-  Write-Host 'Pushing current branch to origin/main...' -ForegroundColor Green
-  if ($Force) {
-    git push --force origin "$($currentBranch):main"
-  } else {
-    git push -u origin "$($currentBranch):main"
-  }
+Write-Host 'Pushing current branch to origin/main...' -ForegroundColor Green
+if ($Force) {
+  git push --force origin "$($currentBranch):main"
+} else {
+  git push -u origin "$($currentBranch):main"
 }
 
 Write-Host 'Publish push completed.' -ForegroundColor Green
