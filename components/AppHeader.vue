@@ -1,7 +1,7 @@
 <template>
   <header class="sticky top-0 z-20 border-b border-slate-200 bg-white/90 backdrop-blur dark:border-slate-800 dark:bg-slate-950/90">
     <nav class="mx-auto flex h-16 max-w-7xl items-center justify-between px-4">
-      <NuxtLink :to="localePath('/')" class="text-lg font-semibold">{{ owner.handle }}.dev</NuxtLink>
+      <NuxtLink :to="localePath('/')" class="text-lg font-semibold">{{ owner.handle }}</NuxtLink>
 
       <ul class="flex items-center gap-5 text-sm">
         <li v-for="item in menuItems" :key="item.to" class="hidden sm:block">
